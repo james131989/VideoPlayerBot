@@ -28,19 +28,19 @@ buttons = [
                 InlineKeyboardButton("❔ HOW TO USE ME ❔", callback_data="help"),
             ],
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/SafoTheBot"),
+                InlineKeyboardButton("CHANNEL", url="https://t.me/Taylorswift13anpage"),
+                InlineKeyboardButton("GROUP", url="https://t.me/Swiftiesworld"),
             ],
             [
-                InlineKeyboardButton("🤖 MAKE YOUR OWN BOT 🤖", url="https://heroku.com/deploy?template=https://github.com/AsmSafone/VideoPlayerBot/tree/alpha"),
+                InlineKeyboardButton("🤖 CREATOR 🤖", url="http://t.me/taylife"),
             ]
          ]
 
 def get_cmd(dur):
     if dur:
-        return "/play"
+        return "/vplay"
     else:
-        return "/stream"
+        return "/vstream"
 
 @Client.on_inline_query()
 async def search(client, query):
@@ -49,7 +49,7 @@ async def search(client, query):
         answers.append(
             InlineQueryResultArticle(
                 title="Deploy Own Video Player Bot",
-                input_message_content=InputTextMessageContent(f"{Config.REPLY_MESSAGE}\n\n<b>© Powered By : \n@AsmSafone | @SafoTheBot 👑</b>", disable_web_page_preview=True),
+                input_message_content=InputTextMessageContent(f"{Config.REPLY_MESSAGE}\n\n<b>© Powered By : \n@SwiftiesWorld 👑</b>", disable_web_page_preview=True),
                 reply_markup=InlineKeyboardMarkup(buttons)
                 )
             )
