@@ -29,7 +29,7 @@
         "required": true
       },
       "SESSION_STRING": {
-        "description": "User Session String, get it from @genStr_robot. Read readme to learn more",
+        "description": "User Accounts Session String, get it from https://replit.com/@AsmSafone/genStr",
         "required": true
       },
       "CHAT_ID": {

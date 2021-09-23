@@ -44,14 +44,14 @@ An Telegram Bot By [@AsmSafone](https://t.me/AsmSafone) To Stream Videos In Tele
 8. `REPLY_MESSAGE` : A reply to those who message the USER account in PM. Leave it blank if you do not need this feature.
 9. `ADMIN_ONLY` : Pass 'True' If you want to make /play commands only for admins. By default /play is available for all.
 10. `STARTUP_STREAM` : Stream URL of live station or a youtube live video to stream when the bot starts.
-11. `HEROKU_API_KEY`: Your Heroku api key. Get one from [here](https://dashboard.heroku.com/account/applications/authorizations/new)
+11. `HEROKU_API_KEY`: Your Heroku api key. Get it from [here](https://dashboard.heroku.com/account)
 12. `HEROKU_APP_NAME`: Name of your Heroku app if deploying to heroku.
 13. `IS_NONSTOP_STREAM`: Change it to 'False' If you want to disable nonstop 24x7 live stream feature. By default it is enabled.
 
 ## Requirements
 - Python 3.6 or Higher.
 - Latest [FFmpeg](https://www.ffmpeg.org/).
-- [Telegram API key](https://docs.pyrogram.org/intro/quickstart#enjoy-the-api).
+- [Telegram API Key](https://docs.pyrogram.org/intro/quickstart#enjoy-the-api).
 - Pyrogram [String Session](http://t.me/genStr_robot) Of The Account.
 - The User Account Needs To Be An Admin In The Group / Channel.
 

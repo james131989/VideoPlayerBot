@@ -37,13 +37,13 @@ async def c_playlist(client, message):
         if Config.msg.get('playlist') is not None:
             try:
                 await Config.msg['playlist'].delete()
-                await Config.msg['playlist'].reply_to_message.delete()
             except:
                 pass
         Config.msg['playlist'] = await message.reply_text(
             pl,
             disable_web_page_preview=True,
         )
+    await delete(message)
 
 
 @Client.on_message(filters.command(["skip", f"skip@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
@@ -171,8 +171,8 @@ async def set_unmute(_, m: Message):
         await delete(s)
 
 
-@Client.on_message(filters.command(["player", f"player@{Config.BOT_USERNAME}"]) & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
-async def show_player(client, m: Message):
+@Client.on_message(filters.command(["current", f"current@{Config.BOT_USERNAME}"]) & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
+async def show_current(client, m: Message):
     data=Config.DATA.get('FILE_DATA')
     if not data.get('dur', 0) or \
         data.get('dur') == 0:
@@ -181,7 +181,7 @@ async def show_player(client, m: Message):
         if Config.playlist:
             title=f"▶️ <b>{Config.playlist[0][1]}</b>"
         elif Config.STREAM_LINK:
-            title=f"▶️ <b>Streaming [Given URL]({data['file']}) !</b>"
+            title=f"▶️ <b>Streaming [Stream Link]({data['file']}) !</b>"
         else:
             title=f"▶️ <b>Streaming [Startup Stream]({Config.STREAM_URL}) !</b>"
     if m.chat.type == "private":
@@ -191,17 +191,17 @@ async def show_player(client, m: Message):
             reply_markup=await get_buttons()
         )
     else:
-        if Config.msg.get('player') is not None:
+        if Config.msg.get('current') is not None:
             try:
-                await Config.msg['player'].delete()
-                await Config.msg['player'].reply_to_message.delete()
+                await Config.msg['current'].delete()
             except:
                 pass
-        Config.msg['player'] = await m.reply_text(
+        Config.msg['current'] = await m.reply_text(
             title,
             disable_web_page_preview=True,
             reply_markup=await get_buttons()
         )
+    await delete(m)
 
 
 @Client.on_message(filters.command(["seek", f"seek@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))

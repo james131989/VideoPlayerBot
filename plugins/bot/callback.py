@@ -75,12 +75,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer("⛔️ Empty Playlist !", show_alert=True)
         else:
             await skip()
-            await query.answer("⏭ Skipped !", show_alert=True)
+            await query.answer("⏩ Skipped !", show_alert=True)
             await sleep(1)
         if Config.playlist:
             title=f"▶️ <b>{Config.playlist[0][1]}</b>"
         elif Config.STREAM_LINK:
-            title=f"▶️ <b>Streaming [Given URL]({Config.DATA['FILE_DATA']['file']}) !</b>"
+            title=f"▶️ <b>Streaming [Stream Link]({Config.DATA['FILE_DATA']['file']}) !</b>"
         else:
             title=f"▶️ <b>Streaming [Startup Stream]({Config.STREAM_URL}) !</b>"
         try:
@@ -153,6 +153,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.lower() == "help":
         buttons = [
             [
+                InlineKeyboardButton("SEARCH VIDEOS", switch_inline_query_current_chat=""),
+            ],
+            [
                 InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
                 InlineKeyboardButton("SUPPORT", url="https://t.me/SafoTheBot"),
             ],
@@ -177,7 +180,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.lower() == "home":
         buttons = [
             [
-                InlineKeyboardButton("SEARCH INLINE", switch_inline_query_current_chat=""),
+                InlineKeyboardButton("SEARCH VIDEOS", switch_inline_query_current_chat=""),
             ],
             [
                 InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),

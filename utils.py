@@ -570,8 +570,9 @@ async def get_buttons():
                     InlineKeyboardButton(f"{get_player_string()}", callback_data="player"),
                 ],
                 [
+                    InlineKeyboardButton("▶️", callback_data="resume"),
                     InlineKeyboardButton(f"{'🔇' if Config.MUTED else '🔊'}", callback_data="mute"),
-                    InlineKeyboardButton(f"⏯", callback_data=f"{get_pause(Config.PAUSE)}"),
+                    InlineKeyboardButton("⏸", callback_data="pause"),
                 ],
             ]
             )
@@ -583,11 +584,12 @@ async def get_buttons():
                 ],
                 [
                     InlineKeyboardButton("⏮", callback_data="rewind"),
-                    InlineKeyboardButton(f"⏯", callback_data=f"{get_pause(Config.PAUSE)}"),
+                    InlineKeyboardButton("▶️", callback_data="resume"),
+                    InlineKeyboardButton("⏸", callback_data="pause"),
                     InlineKeyboardButton("⏭", callback_data="seek"),
                 ],
                 [
-                    InlineKeyboardButton("🔁", callback_data="shuffle"),
+                    InlineKeyboardButton("🔀", callback_data="shuffle"),
                     InlineKeyboardButton(f"{'🔇' if Config.MUTED else '🔊'}", callback_data="mute"),
                     InlineKeyboardButton("⏩", callback_data="skip"),
                     InlineKeyboardButton("🔂", callback_data="replay"),
@@ -700,12 +702,6 @@ def convert(seconds):
     seconds %= 60      
     return "%d:%02d:%02d" % (hour, minutes, seconds)
 
-def get_pause(status):
-    if status == True:
-        return "Resume"
-    else:
-        return "Pause"
-
 
 def stop_and_restart():
     os.system("git pull")
@@ -770,7 +766,7 @@ async def handler(client: PyTgCalls, update: Update):
             elif Config.IS_NONSTOP_STREAM and not Config.playlist:
                 await start_stream()
             elif not Config.IS_NONSTOP_STREAM and not Config.playlist:
-                await group_call.leave_group_call(int(Config.CHAT_ID))
+                await leave_call()
                 LOGGER.warning("Nonstop Stream Feature Disabled, So Left VC !")
             else:
                 await skip()          
